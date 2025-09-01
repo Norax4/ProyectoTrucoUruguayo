@@ -30,10 +30,10 @@ public class TrucoTests
     public void ContarCartasPorPalo()
     {
         List<Carta> cartas = Carta.CrearMazo();
-        int espadas = cartas.Count(c => c.Palo == "espada");
-        int bastos = cartas.Count(c => c.Palo == "basto");
-        int oros = cartas.Count(c => c.Palo == "oro");
-        int copas = cartas.Count(c => c.Palo == "copa");
+        int espadas = cartas.Count(c => c.Palo == "Espada");
+        int bastos = cartas.Count(c => c.Palo == "Basto");
+        int oros = cartas.Count(c => c.Palo == "Oro");
+        int copas = cartas.Count(c => c.Palo == "Copa");
         Assert.Equal(10, espadas);
         Assert.Equal(10, bastos);
         Assert.Equal(10, oros);
@@ -58,13 +58,13 @@ public class TrucoTests
                 int indCarta = rand.Next(0, cartas.Count);
                 Carta added = cartas[indCarta];
                 cartas.RemoveAt(indCarta);
-                jugador.Cartas.Add(added);
+                jugador.Mano.Add(added);
             }
         }
         
         foreach (var jugador in jugadores)
         {
-            Assert.Equal(3, jugador.Cartas.Count);
+            Assert.Equal(3, jugador.Mano.Count);
         }
     }
 
@@ -87,28 +87,29 @@ public class TrucoTests
         List<Carta> cartas = Carta.CrearMazo();
         List<Jugador> jugadores = new List<Jugador>
         {
-            new Jugador { Nombre = "Juan", Mano = new List<Carta>()},
-            new Jugador { Nombre = "Pedro", Mano = new List<Carta>() }
+            new Jugador {ID = 1, Nombre = "Juan"},
+            new Jugador {ID = 1, Nombre = "Pedro"}
         };
 
+        int indCarta;
         foreach (Jugador jugador in jugadores)
         {
             for (int i = 0; i < 3; i++)
             {
-                int indCarta = rand.Next(0, cartas.Count);
+                indCarta = rand.Next(0, cartas.Count);
                 Carta added = cartas[indCarta];
                 cartas.RemoveAt(indCarta);
-                jugador.Cartas.Add(added);
+                jugador.Mano.Add(added);
             }
         }
 
-        int indCarta = rand.Next(0, cartas.Count);
-        Carta cartaMuestra = cartas[indCarta];
-        cartas.RemoveAt(indCarta);
+        int indCartaM = rand.Next(0, cartas.Count);
+        Carta cartaMuestra = cartas[indCartaM];
+        cartas.RemoveAt(indCartaM);
 
         foreach (var jugador in jugadores)
         {
-            Assert.DoesNotContain(cartaMuestra, jugador.Cartas);
+            Assert.DoesNotContain(cartaMuestra, jugador.Mano);
         }
     }
 }

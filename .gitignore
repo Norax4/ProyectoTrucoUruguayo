@@ -1,0 +1,10 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ProyectoTrucoUruguayo/v17
+/.vs/ProyectoTrucoUruguayo/FileContentIndex
+/.vs
+/TrucoUruguayo/bin/Debug/net8.0
+/TrucoUruguayo/obj/Debug/net8.0/ref
+/TrucoUruguayo/obj/Debug/net8.0/refint
