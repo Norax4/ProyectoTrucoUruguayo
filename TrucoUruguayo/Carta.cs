@@ -20,25 +20,17 @@ namespace TrucoUruguayo
             string[] palos = { "Espada", "Basto", "Oro", "Copa" };
             foreach (var palo in palos)
             {
-                for (int numero = 1; numero <= 7; numero++)
+                for (int numero = 1; numero <= 12; numero++)
                 {
-                    Carta carta = new Carta
-                    {
-                        ID = id++,
-                        Palo = palo,
-                        Numero = numero
-                    };
-                    mazo.Add(carta);
-                }
-                for (int numero = 10; numero <= 12; numero++)
-                {
-                    Carta carta = new Carta
-                    {
-                        ID = id++,
-                        Palo = palo,
-                        Numero = numero
-                    };
-                    mazo.Add(carta);
+                    if (numero != 8 && numero != 9) {
+                        Carta carta = new Carta
+                        {
+                            ID = id++,
+                            Palo = palo,
+                            Numero = numero
+                        };
+                        mazo.Add(carta);
+                    }
                 }
             }
             return mazo;
